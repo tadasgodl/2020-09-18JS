@@ -1,0 +1,9 @@
+{
+	"name": "my-first-package.json",
+	"description": "Learning modules",
+	"main": "app.js",
+	"version": "1.0.0",
+	"devDependencies": {
+		"webpack": "^4.44.2"
+	}
+}
