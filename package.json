@@ -4,7 +4,7 @@
 	"main": "app.js",
 	"version": "1.0.0",
 	"scripts": {
-		"build": "webpack src/app.js"
+		"build": "webpack"
 	},
 	"devDependencies": {
 		"webpack": "^4.44.2",
