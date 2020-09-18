@@ -3,7 +3,11 @@
 	"description": "Learning modules",
 	"main": "app.js",
 	"version": "1.0.0",
+	"scripts": {
+		"build": "webpack src/app.js"
+	},
 	"devDependencies": {
-		"webpack": "^4.44.2"
+		"webpack": "^4.44.2",
+		"webpack-cli": "^3.3.12"
 	}
 }
