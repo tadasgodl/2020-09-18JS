@@ -1,1 +1,3 @@
-console.log('dist');
+let vardas = 'ffej'
+
+console.log(vardas ?? 'ne');
