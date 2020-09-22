@@ -1,3 +1,8 @@
+import {loginFromToken} from './login';
+
+loginFromToken();
+
+
 // const promises = new Promise(things);
 
 // function things(res, rej) {
@@ -16,11 +21,11 @@
 // 	console.log(b);
 // }
 
-const credentials = {
-	name: 'jeff',
-	email: 'jeff@jeff.com',
-	password: 'ffej'
-};
+// const credentials = {
+// 	name: 'jeff',
+// 	email: 'jeff@jeff.com',
+// 	password: 'ffej'
+// };
 
 // console.log(JSON.stringify(credentials));
 
@@ -42,7 +47,7 @@ const credentials = {
 
 // const TOKEN = 'Bearer 16|viSxArHZOM7zeKDA1BHTtjX6g4dZrCmwuCowRKvo';
 
-const TOKEN = 'Bearer 71|sxyjL6zIW859J3a3eliFaxi6aIX8M1aQmLz1GFmt';
+// const TOKEN = 'Bearer 71|sxyjL6zIW859J3a3eliFaxi6aIX8M1aQmLz1GFmt';
 
 // fetch('http://rest.stecenka.lt/api/posts', {
 // 	headers: {
@@ -54,24 +59,24 @@ const TOKEN = 'Bearer 71|sxyjL6zIW859J3a3eliFaxi6aIX8M1aQmLz1GFmt';
 // })
 
 
-fetch('http://rest.stecenka.lt/api/posts', {
-	headers: {
-		'Content-type': 'application/json',
-		'Authorization': TOKEN
-	},
-})
-.then (res => res.json())
-.then (data => console.log(data));
+// fetch('http://rest.stecenka.lt/api/posts', {
+// 	headers: {
+// 		'Content-type': 'application/json',
+// 		'Authorization': TOKEN
+// 	},
+// })
+// .then (res => res.json())
+// .then (data => console.log(data));
 
 
-fetch('http://rest.stecenka.lt/api/posts/5', {
-	headers: {
-		'Content-type': 'application/json',
-		'Authorization': TOKEN
-	},
-	method: 'PATCH',
-	body: JSON.stringify({title: 'hello', body: 'man'})
-})
+// fetch('http://rest.stecenka.lt/api/posts/5', {
+// 	headers: {
+// 		'Content-type': 'application/json',
+// 		'Authorization': TOKEN
+// 	},
+// 	method: 'PATCH',
+// 	body: JSON.stringify({title: 'hello', body: 'man'})
+// })
 
-.then (res => res.json())
-.then (data => console.log(data));
+// .then (res => res.json())
+// .then (data => console.log(data));
