@@ -1,6 +1,14 @@
+import {loginForm} from './loginForm';
+import {registerForm} from './registerForm';
 import {loginFromToken} from './login';
 
-loginFromToken();
+if (loginFromToken()) {
+	const loginFormShow = loginForm();
+	document.body.append(loginFormShow);
+} else {
+	const registerFormShow = registerForm();
+	document.body.append(registerFormShow);
+}
 
 
 // const promises = new Promise(things);

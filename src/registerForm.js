@@ -1,4 +1,37 @@
-// export function loginForm() {
+import {formGenerator} from './formGenerator';
+
+const inputs = [
+	{
+		placeholder: "Name",
+		name: 'name',
+		type: 'text'
+	},
+	{
+		placeholder: "Email",
+		name: 'email',
+		type: 'email'
+	},
+	{
+		placeholder: 'Password',
+		name: 'password',
+		type: 'password'
+	}
+];
+
+const buttons = [
+	{
+		name: 'register',
+		type: 'submit',
+		title: 'Register'
+	}
+];
+
+
+export function registerForm() {
+	return formGenerator(inputs, buttons);
+}
+
+// export function registerForm() {
 // 	const formHolder = document.createElement('form');
 // 	formHolder.style.display = 'flex';
 // 	formHolder.style.flexDirection = 'column';
@@ -36,30 +69,3 @@
 // 	});
 // 	return formHolder;
 // };
-
-import {formGenerator} from './formGenerator';
-
-export function loginForm() {
-	return formGenerator(inputs, buttons);
-}
-
-const inputs = [
-	{
-		placeholder: "Email",
-		name: 'email',
-		type: 'email'
-	},
-	{
-		placeholder: 'Password',
-		name: 'password',
-		type: 'password'
-	}
-];
-
-const buttons = [
-	{
-		name: 'login',
-		type: 'submit',
-		title: 'Login'
-	}
-];
