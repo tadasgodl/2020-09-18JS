@@ -18,8 +18,7 @@ export function formGenerator(inputs, buttons) {
 	});
 
 	buttons.forEach(buttonValue => {
-		const button = createNode('button', buttonValue);
-		button.innerHTML = buttonValue.title;
+		const button = createNode('button', buttonValue, [buttonValue.title]);
 		button.style.width = 100 + 'px';
 		button.style.padding = 8 + 'px';
 		button.style.margin = 5 + 'px';
