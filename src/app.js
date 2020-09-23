@@ -2,12 +2,13 @@ import {loginForm} from './loginForm';
 import {registerForm} from './registerForm';
 import {loginFromToken} from './login';
 
-if (loginFromToken()) {
+if (!loginFromToken()) {
 	const loginFormShow = loginForm();
 	document.body.append(loginFormShow);
 } else {
-	const registerFormShow = registerForm();
-	document.body.append(registerFormShow);
+	console.log('You logged in.');
+	// const registerFormShow = registerForm();
+	// document.body.append(registerFormShow);
 }
 
 
