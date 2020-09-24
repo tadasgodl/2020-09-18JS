@@ -1,3 +1,5 @@
+import './main.scss';
+import {mainPage} from './mainPage';
 import {loginForm} from './loginForm';
 import {registerForm} from './registerForm';
 import {loginFromToken} from './login';
@@ -5,8 +7,10 @@ import {loginFromToken} from './login';
 if (!loginFromToken()) {
 	const loginFormShow = loginForm();
 	document.body.append(loginFormShow);
+	// const registerFormShow = registerForm();
+	// document.body.append(registerFormShow);
 } else {
-	console.log('You logged in.');
+	mainPage();
 	// const registerFormShow = registerForm();
 	// document.body.append(registerFormShow);
 }

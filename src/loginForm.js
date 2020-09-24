@@ -1,4 +1,5 @@
 import {formGenerator} from './formGenerator';
+import {mainPage} from './mainPage';
 
 export function loginForm() {
 	return formGenerator(inputs, buttons, fetchLogin);
@@ -34,6 +35,8 @@ function fetchLogin(e) {
 		if (token) {
 			localStorage.setItem('token', token);
 			e.target.remove();
+			mainPage();
+
 		}
 	});
 }

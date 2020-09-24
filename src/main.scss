@@ -1,0 +1,46 @@
+$grey: grey;
+
+nav {
+	position: relative;
+	background-color: $grey;
+	height: 20px;
+	width: 100%;
+}
+
+section {
+	height: 100px;
+}
+
+div {
+	display: flex;
+	justify-content: flex-end;
+	margin: 5px;
+}
+
+img {
+	position: absolute;
+	border-radius: 10px;
+	top: 11%;
+	left: 2px;
+}
+
+a {
+	margin: 30px;
+}
+
+a:hover {
+	cursor: pointer;
+}
+
+p {
+	margin: 2px;
+}
+
+.constructDiv {
+	position: relative;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	margin: 20px;
+	border: 1px solid black;
+}
