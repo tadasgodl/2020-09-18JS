@@ -62,13 +62,13 @@ if (!loginFromToken()) {
 
 // const TOKEN = 'Bearer 71|sxyjL6zIW859J3a3eliFaxi6aIX8M1aQmLz1GFmt';
 
-// fetch('http://rest.stecenka.lt/api/posts', {
+// fetch('http://rest.stecenka.lt/api/sveikinimai', {
 // 	headers: {
 // 		'Content-type': 'application/json',
 // 		'Authorization': TOKEN
 // 	},
 // 	method: 'POST',
-// 	body: JSON.stringify({title: 'another', body: 'one'}),
+// 	body: JSON.stringify({title: 'title', body: 'body'}),
 // })
 
 
