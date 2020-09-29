@@ -35,6 +35,9 @@ function fn(e) {
         main();
       }
     });
+
+    console.log(credentials);
+
 }
 
 const inputs = [

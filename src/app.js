@@ -12,6 +12,5 @@ import {hyperscript} from './library/hyperscript';
 // }
 
 const root = document.getElementById('bucket');
-const birdup = hyperscript('div', {class: 'jeff'}, 'test', ' ye');
 
-mount(birdup, root);
+mount(loginForm(), root);

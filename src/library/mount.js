@@ -8,7 +8,4 @@ import {createNode} from './createNode';
 export function mount(vNode, parent) {
 	const element = createNode(vNode);
 	parent.append(element);
-  // const bucket = document.getElementById('bucket');
-  // bucket.innerHTML = '';
-  // bucket.append(element);
 }

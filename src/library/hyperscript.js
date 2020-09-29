@@ -1,4 +1,6 @@
-import {createNode} from './createNode';
+/**
+* Virtual Node creator
+*/
 
 export function hyperscript(nodeName, attributes = {}, ...children) {
 	return {
