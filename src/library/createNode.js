@@ -4,6 +4,9 @@
 export function createNode(vNode) {
   const element = document.createElement(vNode.nodeName);
 
+/**
+* 
+*/
   for (const attributeName in vNode.attributes) {
     if (typeof vNode.attributes[attributeName] === 'function') {
       element.addEventListener(attributeName, vNode.attributes[attributeName])
@@ -17,7 +20,7 @@ export function createNode(vNode) {
       const textNode = document.createTextNode(child);
       element.append(textNode);
     } else {
-      element.append(createNode(child));
+      element.append(createNode(child)); /** recursion */
     }
   });
 

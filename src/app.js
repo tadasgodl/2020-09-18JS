@@ -4,6 +4,8 @@ import {registerForm} from './components/registerForm';
 import {main} from './pages/main';
 import {mount} from './library/mount';
 import {hyperscript} from './library/hyperscript';
+import Main from './Main';
+import './scss/main.scss';
 
 // if (loginFromToken()) {
 //   main();
@@ -14,3 +16,7 @@ import {hyperscript} from './library/hyperscript';
 const root = document.getElementById('bucket');
 
 mount(loginForm(), root);
+
+const mainObj = new Main();
+
+mount(mainObj.render(), root);

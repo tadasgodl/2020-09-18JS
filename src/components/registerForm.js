@@ -1,4 +1,4 @@
-import {generateForm} from '../library/generateForm';
+import {generateForm} from '../components/generateForm';
 import {loginForm} from './loginForm';
 import {mount} from '../library/mount';
 
