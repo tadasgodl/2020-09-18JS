@@ -15,8 +15,10 @@ import './scss/main.scss';
 
 const root = document.getElementById('bucket');
 
-mount(loginForm(), root);
+// mount(loginForm(), root);
 
-const mainObj = new Main();
+// const mainObj = new Main();
 
-mount(mainObj.render(), root);
+// mount(mainObj.render(), root);
+
+mount(hyperscript(Main), root);

@@ -1,39 +1,36 @@
 /**
 * vNode - virtual object.
 */
-export function createNode(vNode) {
-  const element = document.createElement(vNode.nodeName);
+export function createNode( {nodeNameOrComponent, attributes, children} ) {
+  /** checking if returned object is a function, if so, sending it to renderComponent and ending createNode function prematurely */
+  if (typeof nodeNameOrComponent === 'function') {
+    return renderComponent(nodeNameOrComponent, attributes);
+  }
+  /** if element is not a function (and is a string), function carries on normally */
+  const element = document.createElement(nodeNameOrComponent);
 
-/**
-* 
-*/
-  for (const attributeName in vNode.attributes) {
-    if (typeof vNode.attributes[attributeName] === 'function') {
-      element.addEventListener(attributeName, vNode.attributes[attributeName])
+  for (const attributeName in attributes) {
+    if (typeof attributes[attributeName] === 'function') {
+      element.addEventListener(attributeName, attributes[attributeName])
     } else {
-      element.setAttribute(attributeName, vNode.attributes[attributeName]);
+      element.setAttribute(attributeName, attributes[attributeName]);
     }
   }
 
-  vNode.children.forEach(child => {
+  children.forEach(child => {
     if (typeof child === 'string') {
       const textNode = document.createTextNode(child);
       element.append(textNode);
     } else {
-      element.append(createNode(child)); /** recursion */
+      element.append(createNode(child)); /** recursion, sends child element over createNode function again */
     }
   });
 
   return element;
 };
 
-  // vNode.children.forEach(child => {
-  //   console.log(child);
-  //   if (typeof child === 'string') {
-  //     const textNode = document.createTextNode(child);
-  //     element.append(textNode);
-  //   } else {
-  //     element.append(createNode(child));
-  //   }
-  // });
-
+/** takes arguments from createNode function and summons a class constructor in this case from Main.js file*/
+function renderComponent(classComponent, attributes) {
+  const component = new classComponent(attributes);
+  return createNode(component.render());
+}

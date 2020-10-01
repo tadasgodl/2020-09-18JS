@@ -9,7 +9,7 @@ export function generateForm(inputs = [], buttons = [], handler) {
   });
 
   const buttonNodes = buttons.map(button => {
-    return hyperscript('button', {button}, button.title);
+    return hyperscript('button', button, button.title);
   });
 
   return hyperscript('form', {class: 'form form-login', method: 'POST', submit: handler}, ...inputNodes, ...buttonNodes);
