@@ -5,6 +5,7 @@ import {main} from './pages/main';
 import {mount} from './library/mount';
 import {hyperscript} from './library/hyperscript';
 import Main from './Main';
+import navigation from './components/navigation.js'
 import './scss/main.scss';
 
 // if (loginFromToken()) {
@@ -20,5 +21,6 @@ const root = document.getElementById('bucket');
 // const mainObj = new Main();
 
 // mount(mainObj.render(), root);
+
 
 mount(hyperscript(Main), root);

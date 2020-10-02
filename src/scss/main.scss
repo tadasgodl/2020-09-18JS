@@ -1,0 +1,28 @@
+a {
+	text-decoration: none;
+	color: white;
+}
+
+nav {
+	display: flex;
+	background: grey;
+}
+
+ul {
+	list-style: none;
+	display: flex;
+}
+
+li {
+	margin: 10px;
+	padding: 10px;
+	border: 1px white solid;
+	border-radius: 5px;
+	transition: 0.2s;
+}
+
+li:hover {
+	border: 1px silver solid;
+	color: silver;
+	transition: 0.2s;
+}

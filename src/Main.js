@@ -1,5 +1,6 @@
 import {loginFromToken} from './utility/login';
 import {hyperscript} from './library/hyperscript';
+import navigation from './components/navigation.js';
 
 export default class Main {
 	/** class constructor is summoned automatically whenever it's called with [const constname = new classname] */
@@ -13,10 +14,9 @@ export default class Main {
 
 	render() {
 		if (this.isLoggedIn) {
-			return hyperscript('div', {class: 'yep'}, 'yep');
+			return hyperscript('div', {class: 'yep'}, hyperscript(navigation));
 		} else {
-			return hyperscript('form', {class: 'yep'}, 'nope');
+			return hyperscript('form', {class: 'yep'}, 'nop');
 		}	
 	}
-
 };
