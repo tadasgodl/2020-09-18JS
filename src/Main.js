@@ -16,7 +16,7 @@ export default class Main {
 		if (this.isLoggedIn) {
 			return hyperscript('div', {class: 'yep'}, hyperscript(navigation));
 		} else {
-			return hyperscript('form', {class: 'yep'}, 'nop');
+			return hyperscript('form', {class: 'yep'}, hyperscript(navigation));
 		}	
 	}
 };
