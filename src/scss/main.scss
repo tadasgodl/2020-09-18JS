@@ -4,6 +4,7 @@ a {
 }
 
 nav {
+	position: relative;
 	display: flex;
 	background: grey;
 }
@@ -25,4 +26,14 @@ li:hover {
 	border: 1px silver solid;
 	color: silver;
 	transition: 0.2s;
+}
+
+.burger {
+	position: absolute;
+	top: 27%;
+	left: 93%;
+}
+
+.fa, .fas {
+	font-size: 40px;
 }

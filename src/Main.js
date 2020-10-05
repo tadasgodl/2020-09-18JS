@@ -1,5 +1,5 @@
 import {loginFromToken} from './utility/login';
-import {hyperscript} from './library/hyperscript';
+import h from './library/hyperscript';
 import navigation from './components/navigation.js';
 
 export default class Main {
@@ -14,9 +14,9 @@ export default class Main {
 
 	render() {
 		if (this.isLoggedIn) {
-			return hyperscript('div', {class: 'yep'}, hyperscript(navigation));
+			return h('div', {class: 'yep'}, h(navigation));
 		} else {
-			return hyperscript('form', {class: 'yep'}, hyperscript(navigation));
+			return h('form', {class: 'yep'}, h(navigation));
 		}	
 	}
 };

@@ -1,18 +1,18 @@
-import {hyperscript} from '../library/hyperscript';
+import h from '../library/hyperscript';
 
 export function generateForm(inputs = [], buttons = [], handler) {
   const inputNodes = inputs.map(input => {
     input.keyup = (e) => {
       input.value = e.target.value;
     }
-    return hyperscript('input', input);
+    return h('input', input);
   });
 
   const buttonNodes = buttons.map(button => {
-    return hyperscript('button', button, button.title);
+    return h('button', button, button.title);
   });
 
-  return hyperscript('form', {class: 'form form-login', method: 'POST', submit: handler}, ...inputNodes, ...buttonNodes);
+  return h('form', {class: 'form form-login', method: 'POST', submit: handler}, ...inputNodes, ...buttonNodes);
 }
 
 

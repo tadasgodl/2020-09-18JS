@@ -1,19 +1,49 @@
-import {hyperscript} from '../library/hyperscript';
+import h from '../library/hyperscript';
+import {createNode} from '../library/createNode';
 
 export default class Navigation {
 	constructor() {
-		this.navigationLinks = ['Home', 'Login', 'Register'];
+		
+		this.state = {
+			navigationLinks: ['Home', 'Login', 'Register'],
+			isActive: false
+		};
 	}
 
 	render() {
-		const listItems = this.navigationLinks.map(item => {
-			const a = hyperscript('a', {href: 'yep'}, item);
-			const li = hyperscript('li', {}, a);
+		const listItems = this.state.navigationLinks.map(item => {
+			const a = h('a', {href: ''}, item);
+			const li = h('li', {}, a);
 			return li;
 		});
-		const ul = hyperscript('ul', {}, ...listItems);
-		const nav = hyperscript('nav', {}, ul);
-		return nav;
+		const ul = h('ul', {}, ...listItems);
+		const icon = h('i', {class: 'fas fa-bars'})
+		const navBurger = h('div', {class: 'burger', click: () => this.active()}, icon);
+		const nav = h('nav', {}, ul, navBurger);
+
+		return h('nav', {}, this.state.isActive ? ul : '', navBurger);
+	}
+
+	active(e) {
+		this.setState({isActive: !this.state.isActive});
+	}
+
+
+	setState(newState) {
+		const object = {
+			...this.state,
+			...newState
+		};
+		this.state = object;
+		this.updateComponent();
+		console.log(this.state);
+	}
+
+	updateComponent() {
+		const vNode = this.render();
+		const element = createNode(vNode);
+		this.element.replaceWith(element);
+		this.element = element;
 	}
 }
 

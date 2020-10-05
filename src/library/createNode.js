@@ -32,5 +32,7 @@ export function createNode( {nodeNameOrComponent, attributes, children} ) {
 /** takes arguments from createNode function and summons a class constructor in this case from Main.js file*/
 function renderComponent(classComponent, attributes) {
   const component = new classComponent(attributes);
-  return createNode(component.render());
+  component.element = createNode(component.render());
+  console.log(component, component.element)
+  return component.element;
 }
