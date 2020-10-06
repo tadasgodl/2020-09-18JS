@@ -33,6 +33,6 @@ export function createNode( {nodeNameOrComponent, attributes, children} ) {
 function renderComponent(classComponent, attributes) {
   const component = new classComponent(attributes);
   component.element = createNode(component.render());
-  console.log(component, component.element)
+  console.log(component)
   return component.element;
 }

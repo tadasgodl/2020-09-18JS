@@ -1,9 +1,9 @@
 import h from '../library/hyperscript';
-import {createNode} from '../library/createNode';
+import Component from '../library/Component';
 
-export default class Navigation {
-	constructor() {
-		
+export default class Navigation extends Component {
+	constructor(props) {	
+		super(props);
 		this.state = {
 			navigationLinks: ['Home', 'Login', 'Register'],
 			isActive: false
@@ -11,6 +11,7 @@ export default class Navigation {
 	}
 
 	render() {
+		console.log(this.props.showing)
 		const listItems = this.state.navigationLinks.map(item => {
 			const a = h('a', {href: ''}, item);
 			const li = h('li', {}, a);
@@ -27,38 +28,4 @@ export default class Navigation {
 	active(e) {
 		this.setState({isActive: !this.state.isActive});
 	}
-
-
-	setState(newState) {
-		const object = {
-			...this.state,
-			...newState
-		};
-		this.state = object;
-		this.updateComponent();
-		console.log(this.state);
-	}
-
-	updateComponent() {
-		const vNode = this.render();
-		const element = createNode(vNode);
-		this.element.replaceWith(element);
-		this.element = element;
-	}
 }
-
-
-
-
-
-// this.navigationLinks = [
-// 			{
-// 			title: 'home'
-// 			},
-// 			{
-// 			title: 'login'
-// 			},
-// 			{
-// 			title: 'register'
-// 			}
-// 		]
