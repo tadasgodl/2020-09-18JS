@@ -11,9 +11,7 @@ export default class Main extends Component {
 	}
 
 	login() {
-		this.setState({
-			isLoggedIn: loginFromToken()
-		})
+		this.state.isLoggedIn = loginFromToken()
 	}
 
 	render() {

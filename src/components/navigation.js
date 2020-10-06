@@ -11,7 +11,6 @@ export default class Navigation extends Component {
 	}
 
 	render() {
-		console.log(this.props.showing)
 		const listItems = this.state.navigationLinks.map(item => {
 			const a = h('a', {href: ''}, item);
 			const li = h('li', {}, a);
