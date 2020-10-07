@@ -5,26 +5,64 @@ export default class Login extends Component {
 	constructor() {
 		super();
 		this.state = {
-			route: 'login',
 			inputData: [
-			{text: 'Email', placeholder: ''},
-			{text: 'Password', placeholder: ''}
+			{text: 'Email', placeholder: '', value: ''},
+			{text: 'Password', placeholder: '', value: ''}
 			],
 			buttonData: [
 			{type: 'submit'}
-			]
+			],
+			linkData: [
+			{title: 'Not a member?', class: 'fas fa-user-plus'}]
 		}
 	}
 
 	render() {
+		const allLinks = this.state.linkData.map(link => {
+			return h('p', {}, link.title, h('i', {class: link.class, click: (e) => {
+				console.log('Done'); /**should set state into register*/
+			}}))
+		})
 		const allInputs = this.state.inputData.map(input => {
 			return h('label', {}, input.text, h('input', {placeholder: input.placeholder, class: 'required'}))
 		})
 		const allButtons = this.state.buttonData.map(button => {
 			return h('button', button, 'Login');
 		})
-		console.log(allButtons);
-		const form = h('form', {class: 'form'}, ...allInputs, ...allButtons);
+		const form = h('form', {class: 'form', submit: (e) => {
+			loginFormFunction(e, allInputs, allButtons) /** incomplete */
+		}}, ...allInputs, ...allButtons, ...allLinks);
 		return h('div', {}, form);
 	}
+
+	transition() {
+		this.setState({route: 'register'});
+	}
+}
+
+
+function loginFormFunction(e, inputs = [], buttons = []) {
+	e.preventDefault();
+
+	const loginInfo = {};
+
+	fetch('http://rest.stecenka.lt/login', {
+    headers: {
+      'Content-type': 'application/json'
+    },
+    method: 'POST',
+    body: JSON.stringify(loginInfo)
+  })
+    .then(req => {
+      if (req.ok) {
+        return req.json();
+      }
+    })
+    .then(token => {
+      if (token) {
+        localStorage.setItem('token', token);
+        user.token = 'Bearer ' + token;
+        /**should set state into mainpage*/
+      }
+    });
 }
