@@ -1,8 +1,8 @@
-import Component '../library/Component.js';
+import Component from '../library/Component.js';
 import h from '../library/hyperscript';
 
 
-export default class Register extends Component {
+export default class register extends Component {
 	constructor(props) {
 		super(props)
 		this.state = {
