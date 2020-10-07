@@ -8,19 +8,8 @@ import Main from './Main';
 import navigation from './components/navigation.js'
 import './scss/main.scss';
 
-// if (loginFromToken()) {
-//   main();
-// } else {
-//   mount(loginForm());
-// }
 
 const root = document.getElementById('bucket');
-
-// mount(loginForm(), root);
-
-// const mainObj = new Main();
-
-// mount(mainObj.render(), root);
 
 
 mount(h(Main), root);
