@@ -1,24 +1,31 @@
-import Component '../library/Component';
+import Component '../library/Component.js';
 import h from '../library/hyperscript';
 
 
 export default class Register extends Component {
-	consutructor(props) {
-		super(props);
+	constructor(props) {
+		super(props)
 		this.state = {
-			inputs: [
+			data: [
 				{
-					labelText: 'Test',
+					text: 'First Name',
 					placeholder: 'Test'
 				},
 				{
-					placeholder: 'Test2'
+					placeholder: 'Test2',
+
 				}
-			];
+			]
 		}
 	}
 
 	render() {
-		return h('button', {click: () => this.props.route('login')}, 'Check');
+		// return h('button', {click: () => this.props.route('login')}, 'Check');
+		const inputs = this.state.data.map(input => {
+			return h('label', {}, input.text, h('input', {placeholder: input.placeholder}))
+		});
+
+		const form = h('form', {class: form}, ...inputs);
+		return h('div', {class: 'register-container'}, form)
 	}
 }
