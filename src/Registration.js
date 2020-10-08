@@ -6,10 +6,10 @@ export default class Registration extends Component {
 		super(props);
 		this.state = {
 			inputData: [ 
-			{text: 'First Name', placeholder: 'John', value: ''},
-			{text: 'Last Name', placeholder: 'Smith', value: ''},
-			{text: 'Email', placeholder: 'John@Smith.com', value: ''},
-			{text: 'Password', placeholder: 'Password', value: ''}
+			{text: 'First Name', placeholder: 'John', name: 'name', value: '', type: 'text'},
+			{text: 'Last Name', placeholder: 'Smith', name: 'surname',value: '', type: 'text'},
+			{text: 'Email', placeholder: 'John@Smith.com', name: 'email', value: '', type: 'email'},
+			{text: 'Password', placeholder: 'Password', name: 'password', value: '', type: 'password'}
 			],
 			buttonData: [
 			{type: 'submit'}
@@ -23,27 +23,27 @@ export default class Registration extends Component {
 	render() {
 		const allLinks = this.state.linkData.map(link => {
 			return h('p', {}, link.title, h('i', {class: link.class, click: (e) => {
-				console.log('Done'); /**should set state into login*/
+				this.props.route('login');
 			}}))
 		});
 		const allInputs = this.state.inputData.map(input => {
-			return h('label', {}, input.text, h('input', {placeholder: input.placeholder}))
+			return h('label', {}, input.text, h('input', {placeholder: input.placeholder, type: input.type, keyup: (e) => {
+				input.value = e.target.value;
+				console.log(input)
+			}, value: input.value}))
 		})
+		console.log(allInputs)
 		const allButtons = this.state.buttonData.map(button => {
 			return h('button', button, 'Register');
 		})
 		const form = h('form', {class: 'form', submit: (e) => {
-			registerFormFunction(e, allInputs, allButtons) /** incomplete */
+			registerFormFunction(e, allInputs, allButtons, this.props.route) /** incomplete */
 		}}, ...allInputs, ...allButtons, ...allLinks);
 		return h('div', {}, form);
 	}
-
-	transition() {
-		this.setState({route: 'login'});
-	}
 }
 
-function registerFormFunction(e, inputs = [], buttons = []) {
+function registerFormFunction(e, inputs = [], buttons = [], router) {
 	e.preventDefault();
 
 	const registerInfo = {};
@@ -62,7 +62,7 @@ function registerFormFunction(e, inputs = [], buttons = []) {
 	})
 	.then (res => {
 		if (res) {
-			/**should set state into login*/
+			router('login');
 		}
 	})
 

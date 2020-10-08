@@ -2,8 +2,8 @@ import Component from './library/Component.js';
 import h from './library/hyperscript';
 
 export default class Login extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			inputData: [
 			{text: 'Email', placeholder: '', value: ''},
@@ -20,7 +20,7 @@ export default class Login extends Component {
 	render() {
 		const allLinks = this.state.linkData.map(link => {
 			return h('p', {}, link.title, h('i', {class: link.class, click: (e) => {
-				console.log('Done'); /**should set state into register*/
+				this.props.route('register');
 			}}))
 		})
 		const allInputs = this.state.inputData.map(input => {
@@ -30,7 +30,7 @@ export default class Login extends Component {
 			return h('button', button, 'Login');
 		})
 		const form = h('form', {class: 'form', submit: (e) => {
-			loginFormFunction(e, allInputs, allButtons) /** incomplete */
+			loginFormFunction(e, allInputs, allButtons, this.props.route) /** incomplete */
 		}}, ...allInputs, ...allButtons, ...allLinks);
 		return h('div', {}, form);
 	}
@@ -41,7 +41,7 @@ export default class Login extends Component {
 }
 
 
-function loginFormFunction(e, inputs = [], buttons = []) {
+function loginFormFunction(e, inputs = [], buttons = [], router) {
 	e.preventDefault();
 
 	const loginInfo = {};
@@ -62,7 +62,7 @@ function loginFormFunction(e, inputs = [], buttons = []) {
       if (token) {
         localStorage.setItem('token', token);
         user.token = 'Bearer ' + token;
-        /**should set state into mainpage*/
+        router('mainpage');
       }
     });
 }
