@@ -27,17 +27,16 @@ export default class Registration extends Component {
 			}}))
 		});
 		const allInputs = this.state.inputData.map(input => {
-			return h('label', {}, input.text, h('input', {placeholder: input.placeholder, type: input.type, keyup: (e) => {
+			return h('label', {}, input.text, h('input', {placeholder: input.placeholder, type: input.type, value: input.value, keyup: (e) => {
 				input.value = e.target.value;
-				console.log(input)
-			}, value: input.value}))
+				console.log(input);
+			}}))
 		})
-		console.log(allInputs)
 		const allButtons = this.state.buttonData.map(button => {
 			return h('button', button, 'Register');
 		})
 		const form = h('form', {class: 'form', submit: (e) => {
-			registerFormFunction(e, allInputs, allButtons, this.props.route) /** incomplete */
+			registerFormFunction(e, allInputs, allButtons, this.props.route)
 		}}, ...allInputs, ...allButtons, ...allLinks);
 		return h('div', {}, form);
 	}
@@ -45,6 +44,8 @@ export default class Registration extends Component {
 
 function registerFormFunction(e, inputs = [], buttons = [], router) {
 	e.preventDefault();
+
+	console.log(router);
 
 	const registerInfo = {};
 
@@ -62,7 +63,7 @@ function registerFormFunction(e, inputs = [], buttons = [], router) {
 	})
 	.then (res => {
 		if (res) {
-			router('login');
+			router('login')
 		}
 	})
 

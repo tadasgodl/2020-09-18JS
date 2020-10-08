@@ -14,14 +14,23 @@ export default class Main extends Component {
 		this.state = {
 			route: 'register',
 			// navigationLinks: ['Home', 'Login', 'Register']
+			isLoggedIn: false,
+			user: {}
 		}
 		this.login();
-		this.state.route = 'login';
+		// this.state.route = 'login';
 
 	}
 
 	login() {
-		this.state.isLoggedIn = loginFromToken()	}
+		const user = loginFromToken()
+
+		if (user) {
+			this.state.user = user;
+			this.state.isLoggedIn = true;
+			this.state.route = 'page';
+		}
+	}
 
 	changeRoute = (routeName) => {
 		this.setState({route: routeName})

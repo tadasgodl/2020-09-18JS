@@ -1,14 +1,9 @@
 export function loginFromToken() {
-  let token = localStorage.getItem('token');
+  const user = JSON.parse(localStorage.getItem('user'));
 
-  if (token) {
-    user.token = 'Bearer ' + token;
+  if (user) {
     return true;
   }
 
   return false;
-}
-
-export const user = {
-  token: ''
 };

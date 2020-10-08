@@ -22,3 +22,16 @@ export default class Page extends Component {
 		return h('section', {class: 'mainpage'}, nav, div);
 	}
 }
+
+
+// fetch('http://rest.stecenka.lt/api/sveikinimai', {
+//     headers: {
+//       'Content-type': 'application/json',
+//       'Authorization': user.token,
+//     }
+//   })
+//     .then(req => req.json())
+//     .then(res => {
+    	
+//     });
+
