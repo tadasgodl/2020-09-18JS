@@ -1,3 +1,7 @@
+* {
+	font-family: sans-serif;
+}
+
 a {
 	text-decoration: none;
 	color: white;
@@ -36,4 +40,47 @@ li:hover {
 
 .fa, .fas {
 	font-size: 40px;
+}
+
+.form-container {
+	display: flex;
+	justify-content: center;
+}
+
+.form {
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	display: inline-grid;
+	text-align: center;
+	margin-top: 10px;
+}
+
+button {
+	margin-top: 10px;
+}
+
+.fas, fa-user-plus, .far, fa-user {
+	font-size: 20px;
+	transition: 0.2s;
+}
+
+.fa-user-plus:hover, .fa-user:hover {
+	transition: 0.2s;
+	color: grey;
+}
+
+.not-a-button {
+	background: grey;
+}
+
+p {
+	margin: 5px;
+}
+
+p:hover {
+	cursor: pointer;
+	color: silver;
 }

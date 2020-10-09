@@ -4,7 +4,8 @@ import navigation from './components/navigation.js';
 import Component from './library/Component';
 import Registration from './Registration';
 import Login from './Login';
-import Page from './Page'
+import Page from './Page';
+import AddPost from './AddPost';
 
 // console.log(Register);
 
@@ -12,7 +13,7 @@ export default class Main extends Component {
 	constructor() {
 		super()
 		this.state = {
-			route: 'register',
+			route: 'login',
 			// navigationLinks: ['Home', 'Login', 'Register']
 			isLoggedIn: false,
 			user: {}

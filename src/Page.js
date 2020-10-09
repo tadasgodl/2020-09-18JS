@@ -2,8 +2,8 @@ import Component from './library/Component.js';
 import h from './library/hyperscript';
 
 export default class Page extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			buttonData: [
 			{text: 'All Posts'},
@@ -15,23 +15,41 @@ export default class Page extends Component {
 
 	render() {
 		const allButtons = this.state.buttonData.map(button => {
-			return h('p', {}, button.text);
+			return h('p', {text: button.text, click: () => {
+				if (button.text === 'All Posts') {
+					this.props.route('mainpage');
+				} else if (button.text === 'New Post') {
+					this.props.route('addPost');
+				} else if (button.text === 'Logout') {
+					this.props.route('login');
+				}
+			}}, button.text);
 		})
 		const nav = h('nav', {class: 'nav'}, ...allButtons);
-		const div = h('div', {}, 'main page info');
+		const div = h('div', {}); /** cant insert fetch response data*/
 		return h('section', {class: 'mainpage'}, nav, div);
 	}
 }
 
 
-// fetch('http://rest.stecenka.lt/api/sveikinimai', {
-//     headers: {
-//       'Content-type': 'application/json',
-//       'Authorization': user.token,
-//     }
-//   })
-//     .then(req => req.json())
-//     .then(res => {
-    	
-//     });
+function mainpageFetch() {
 
+	/** cant insert fetch response data*/
+
+	fetch('http://rest.stecenka.lt/api/skelbimai', {
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer 965|Doljydys5knw0kTlZpyPM9DpELqH55IVTpAvDJ6y',
+    },
+    method: 'GET'
+  	})
+  	.then(req => req.json())
+  	.then(response => {
+  		response.forEach(res => {
+  			const title = h('p', {class: 'post-title'}, res.title);
+  			const body = h('p', {class: 'post-body'}, res.body)
+  			const div = h('div', {class: 'post-container'}, title, body);
+  			return div;
+  		})
+  	})
+}

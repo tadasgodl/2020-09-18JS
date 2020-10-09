@@ -32,11 +32,7 @@ export default class Login extends Component {
 		const form = h('form', {class: 'form', submit: (e) => {
 			loginFormFunction(e, allInputs, allButtons, this.props.route) /** incomplete */
 		}}, ...allInputs, ...allButtons, ...allLinks);
-		return h('div', {}, form);
-	}
-
-	transition() {
-		this.setState({route: 'register'});
+		return h('div', {class: 'form-container'}, form);
 	}
 }
 
@@ -44,14 +40,21 @@ export default class Login extends Component {
 function loginFormFunction(e, inputs = [], buttons = [], router) {
 	e.preventDefault();
 
-	const loginInfo = {};
+	/** input not feeding information into loginInfo, fetch incomplete.*/
+
+	// router('mainpage');
+
+	const loginInfo = {
+		email: '',
+		password: ''
+	};
 
 	fetch('http://rest.stecenka.lt/login', {
     headers: {
       'Content-type': 'application/json'
     },
     method: 'POST',
-    body: JSON.stringify(loginInfo)
+    body: JSON.stringify()
   })
     .then(req => {
       if (req.ok) {
@@ -60,6 +63,7 @@ function loginFormFunction(e, inputs = [], buttons = [], router) {
     })
     .then(token => {
       if (token) {
+      	console.log(token);
         localStorage.setItem('token', token);
         user.token = 'Bearer ' + token;
         router('mainpage');
